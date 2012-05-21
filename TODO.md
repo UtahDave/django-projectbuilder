@@ -6,6 +6,8 @@
 - Add '--domain' argparse flag
 - Replace 'prototypemagic.com' in server-scripts/proto-new-virtualhost-subdomain.py with result of --domain
 - Use stdin/out/err pipes to show output during `pip install -r requirements.txt`
+- Fix `cpvirtualenv` bug in `virtualenvwrapper.sh` or create our own replacement
+- Server should use something like `lynx -dump checkip.dyndns.org 2>&1 | awk '{print $4}' | grep ^[0-9]` in place of the generic `my-django-powerde-site.com`
 
 ## Final Stuff
 - Use distutils to make a setup.py
