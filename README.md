@@ -1,7 +1,56 @@
-ProtoType Magic's Django Project Builder
-========================================
+PTM Web Engineering's Django Project Builder
+============================================
 
-## Server Usage
+## Intro
+
+Django Project Builder is the fastest, easiest way to, well... build a
+new Django project!
+
+
+## Features
+
+* Create a new Django project, git repo, virtualenv, and Django app
+  with sane defaults _all_ with a single command
+
+* Prepare your server to be deployed to with a couple more commands
+
+* Auto-deploy your shiny new Django app to your server with a simple
+  `git push`!  (Uses git hooks behind the scenes... but you don't need
+  to worry about that, do you?)
+
+
+## Non-features
+
+* Tediously editing config files before anything works, even though
+  you use the same defaults every single time
+
+* Being forced to copy/paste/edit the same content over and over from
+  old `settings.py` files
+
+* Spending too much time configurationating, and not enough time
+  coding
+
+
+## Usage
+
+### Dev Box Usage
+
+After cloning this repo, `cd` into it and run
+
+    python djangobuilder.py --path /path/to/newproject [--bootstrap]
+
+to create the /path/to/newproject_site directory, which contains
+_tons_ of Django boilerplate -- common imports, virtualenv creation,
+new git repo, and more!
+
+If you add the `--bootstrap` argument, your project will come with all
+needed bootstrap defaults. In `media/css/style.css` you will find lots
+more goodies :-).
+
+git, virtualenv, virtualenvwrapper, and bash are required.
+
+
+### Server Usage
 
 After cloning this repo, `cd` into it and run
 
@@ -9,35 +58,5 @@ After cloning this repo, `cd` into it and run
 
 to create the "top-level" directory, bare git repo, and empty
 ${PROJECT_NAME}_site directory for the soon-to-exist Django project.
-Follow the instructions provided, which include using apachebuilder.sh
+Follow the instructions provided, which include using `apachebuilder.sh`
 to generate your project's Apache config.
-
-
-## Dev Box Usage
-
-After cloning this repo, `cd` into it and run
-
-    python djangobuilder.py --path new_project
-
-to create the /path/to/new_project/new_project_site directory, which
-contains lots of Django boilerplate -- common imports, virtualenv
-creation + the Django apps/Python modules we always install (Django,
-South, Celery, django-cms, etc), and even HTML5 Boilerplate.
-
-
-## TODO
-
-* post-receive: Run Postgres migrations
-
-* Database rollbacks: create timestamped SQL dump before migrations, then rollback with a post-receive commit?
-
-* Code rollbacks: use Fabric? Or is `git revert master~2..master` good enough?
-
-
-## SBHX Presentation-inspired TODO
-
-* djangobuilder.py: When running first migration on newly-created project (on user's dev box), use http://www.arthurkoziel.com/2008/09/04/automatical-superuser-creation-django to automate superuser creation
-
-* Create postgresbuilder.sh for automatic Postgres user creation, credentials included
-
-* Create route53builder.py to automatically create new subdomain [NOTE: I'll use the script Jay wrote for Cazooz]
